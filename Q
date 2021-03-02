@@ -1,0 +1,37 @@
+import sqlite3
+import pandas
+print("Bienvenido, iniciemos "
+      ""
+      ""
+      "")
+
+print("Registra tus datos")
+c=sqlite3.connect("Alpha.db")
+con=c.cursor()
+
+
+def nuevatabla():
+      c
+      c.execute(""" CREATE TABLE IF NOT EXISTS pa (
+      NSS INTEGER PRIMARY KEY UNIQUE,
+      Nombre TEXT,
+      Edad INTEGER
+      )""")
+      c.commit()
+      c.close()
+
+#### agrear datos a la base de datos
+try:
+      NSS=int(input("Numero de seguridad social: "))
+      Nombre=input("Nombre del paciente: ")
+      Edad=int(input("Edad del paciente"))
+
+      c.execute("INSERT INTO pa(NSS,Nombre,Edad)VALUES (?,?,?)""", (NSS,Nombre,Edad))
+
+      c.commit()
+      print("Registro existoso")
+except :
+       print("Existe un registro previo con ese numero de seguridad social")
+
+c.close()
+
